@@ -4,7 +4,7 @@ import openai
 app = Flask(__name__)
 
 # Configure OpenAI API credentials
-openai.api_key = "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"
+openai.api_key = "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"
 
 @app.route('/')
 def index():
@@ -38,8 +38,8 @@ def generate_lesson_plan():
         return render_template('lesson_plan.html', lesson_plan=lesson_plan)
     except Exception as e:
         # Handle API errors
-        error_message = f"An error occurred: {str(e)}"
-        return render_template('error.html', error_message=error_message)
+        result = {'Api': 'Api Error'}
+        return result, 201
 
 if __name__ == '__main__':
     app.run(debug=True)

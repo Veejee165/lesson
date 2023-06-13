@@ -2,56 +2,73 @@
 <html>
 <head>
   <style>
-      body {
+    body {
       font-family: 'Nunito', sans-serif;
-    margin:0;
-   padding-left:30px;
-   height:100%;
-  background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-.container {
-	max-width:300px;
-	width:100%;
-	left:10px;
-	position:relative;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-input {
-margin: 0 0 10px;
-    width: 250px;
-    padding: 0px 10px;
-    background:rgba(255,255,255,0.3);
-}
-input,
-input::-webkit-input-placeholder {
-    font-size: 15px;
-    line-height: 2;
-}
-input.c {
-font-size: 18px;
-color:#0A3D5B;
-  text-align: center;
-  font-style: normal;
-margin: 11px 19px;
+      margin: 0;
+      padding-left: 30px;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
 
-    background-image: linear-gradient(0, #0A3D5B, #0A3D5B);
-    background-size: 0;
-    transition: .5s;
-    background-repeat: no-repeat;
-    padding: 7px 10px;
-}
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-input.c:hover {
-    background-size: 100%;
-    color: #fff;
-}
-h1{
-color: #0A3D5B;
-}
+    input {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      color: #333;
+    }
+
+    textarea {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      color: #333;
+    }
+
+    input.c {
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+      font-style: normal;
+      margin: 11px 0;
+      background-image: linear-gradient(45deg, #0A3D5B, #25668D);
+      background-size: 200%;
+      transition: background-position 0.3s;
+      border: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+
+    input.c:hover {
+      background-position: right;
+      color: #fff;
+    }
+
+    h1 {
+      color: #0A3D5B;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   </style>
   <title>Lesson Plan Generator</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
@@ -62,21 +79,17 @@ color: #0A3D5B;
   <form action="{{ url_for('generate_lesson_plan') }}" method="POST">
     <label for="subject">Subject:</label>
     <input type="text" id="subject" name="subject" required>
-    <br>
 
     <label for="class_level">Class Level:</label>
     <input type="text" id="class_level" name="class_level" required>
-    <br>
 
     <label for="learning_objectives">Learning Objectives:</label>
     <textarea id="learning_objectives" name="learning_objectives" rows="4" required></textarea>
-    <br>
 
     <label for="duration">Duration (in minutes):</label>
     <input type="number" id="duration" name="duration" required>
-    <br>
 
-    <input type="submit" class = 'c' value="Generate Lesson Plan">
+    <input type="submit" class="c" value="Generate Lesson Plan">
   </form>
 </div>
 </body>
