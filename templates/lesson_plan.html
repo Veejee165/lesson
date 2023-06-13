@@ -1,72 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body {
-      font-family: 'Nunito', sans-serif;
-      margin: 0;
-      padding-left: 30px;
-      height: 100%;
-      background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      color: #0A3D5B;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .section-content {
-      margin-bottom: 20px;
-    }
-  </style>
-  <title>Generated Lesson Plan</title>
+  <title>Extracted Text</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-  <h1>Generated Lesson Plan</h1>
-  <div class="section">
-    <div class="section-title">Subject:</div>
-    <div class="section-content">{{ subject }}</div>
-  </div>
-  <div class="section">
-    <div class="section-title">Class Level:</div>
-    <div class="section-content">{{ class_level }}</div>
-  </div>
-  <div class="section">
-    <div class="section-title">Learning Objectives:</div>
-    <div class="section-content">{{ learning_objectives }}</div>
-  </div>
-  <div class="section">
-    <div class="section-title">Duration:</div>
-    <div class="section-content">{{ duration }}</div>
-  </div>
-  <div class="section">
-    <div class="section-title">Teacher Name:</div>
-    <div class="section-content">{{ teacher_name }}</div>
-  </div>
-  <div class="section">
-    <div class="section-title">Generated Lesson Plan:</div>
-    <div class="section-content">{{ generated_plan }}</div>
-  </div>
+  <h1>Lesson Plan</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Subject</th>
+      <th>{{ extracted_text['subject'] }}</th>
+    </tr>
+    <tr>
+      <th>Duration</th>
+      <th>{{ extracted_text['dura'] }}</th>
+    </tr>
+    <tr>
+      <th>Teachers Name</th>
+      <th>{{ extracted_text['tname'] }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th>Learning Objectives</th>
+      <th>{{ extracted_text['learn'] }}</th>
+    </tr>
+    <tr>
+      <td>Supporting Material</td>
+      <td>{{ extracted_text['Supporting Material'] }}</td>
+    </tr>
+    <tr>
+      <td>Key Vocabulary</td>
+      <td>{{ extracted_text['Key Vocabulary'] }}</td>
+    </tr>
+    <tr>
+      <td>Knowledge</td>
+      <td>{{ extracted_text['Knowledge'] }}</td>
+    </tr>
+    <tr>
+      <td>Skills</td>
+      <td>{{ extracted_text['Skills'] }}</td>
+    </tr>
+<!--    <tr>-->
+<!--      <td>Differentiation</td>-->
+<!--      <td>{{ extracted_text['Differentiation'] }}</td>-->
+<!--    </tr>-->
+    <tr>
+      <td>Learning experiences (How will they learn?)</td>
+    </tr>
+    <tr>
+      <td>Prepare</td>
+      <td>{{ extracted_text['Prepare'] }}</td>
+    </tr>
+    <tr>
+      <td>Plan</td>
+      <td>{{ extracted_text['Plan'] }}</td>
+    </tr>
+    <tr>
+      <td>Investigate</td>
+      <td>{{ extracted_text['Investigate'] }}</td>
+    </tr>
+    <tr>
+      <td>Apply</td>
+      <td>{{ extracted_text['Apply'] }}</td>
+    </tr>
+    <tr>
+      <td>Connect</td>
+      <td>{{ extracted_text['Connect'] }}</td>
+    </tr>
+    <tr>
+      <td>Evaluate and Reflect</td>
+      <td>{{ extracted_text['Evaluate and Reflect'] }}</td>
+    </tr>
+    <tr>
+      <td>Educator Assessment</td>
+      <td>{{ extracted_text['Educator Assessment'] }}</td>
+    </tr>
+    <tr>
+      <td>Educator Reflection</td>
+      <td>{{ extracted_text['Educator Reflection'] }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 </body>
 </html>
