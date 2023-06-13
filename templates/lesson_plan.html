@@ -7,9 +7,77 @@
 <body>
 <div class="container">
   <h1>Generated Lesson Plan</h1>
-  <div class="lesson-plan">
-    <pre>{{ lesson_plan }}</pre>
-  </div>
+
+  <ol class="lesson-plan">
+    <li>
+      <strong>Lesson title (short):</strong> {{ generated_plan.lesson_title }}
+    </li>
+    <li>
+      <strong>Teacher name (short):</strong> {{ generated_plan.teacher_name }}
+    </li>
+    <li>
+      <strong>Subject (short):</strong> {{ generated_plan.subject }}
+    </li>
+    <li>
+      <strong>Grade (short):</strong> {{ generated_plan.grade }}
+    </li>
+    <li>
+      <strong>Date (short):</strong> {{ generated_plan.date }}
+    </li>
+    <li>
+      <strong>Duration (short):</strong> {{ generated_plan.duration }}
+    </li>
+    <li>
+      <strong>Key vocabulary (short):</strong> {{ generated_plan.key_vocabulary }}
+    </li>
+    <li>
+      <strong>Supporting material:</strong> {{ generated_plan.supporting_material }}
+    </li>
+    <li>
+      <strong>Learning outcome (short):</strong> {{ generated_plan.learning_outcome }}
+    </li>
+    <li>
+      <strong>Knowledge:</strong> {{ generated_plan.knowledge }}
+    </li>
+    <li>
+      <strong>Skills:</strong> {{ generated_plan.skills }}
+    </li>
+    <li>
+      <strong>Understanding:</strong> {{ generated_plan.understanding }}
+    </li>
+    <li>
+      <strong>Differentiation (Med):</strong> {{ generated_plan.differentiation }}
+    </li>
+    <li>
+      <strong>Learning experiences (Med):</strong>
+      <ul>
+        <li>
+          <strong>Prepare:</strong> {{ generated_plan.learning_experiences.prepare }}
+        </li>
+        <li>
+          <strong>Plan:</strong> {{ generated_plan.learning_experiences.plan }}
+        </li>
+        <li>
+          <strong>Investigate:</strong> {{ generated_plan.learning_experiences.investigate }}
+        </li>
+        <li>
+          <strong>Apply:</strong> {{ generated_plan.learning_experiences.apply }}
+        </li>
+        <li>
+          <strong>Connect:</strong> {{ generated_plan.learning_experiences.connect }}
+        </li>
+        <li>
+          <strong>Evaluate and reflect:</strong> {{ generated_plan.learning_experiences.evaluate_and_reflect }}
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Educator assessment:</strong> {{ generated_plan.educator_assessment }}
+    </li>
+    <li>
+      <strong>Educator reflection:</strong> {{ generated_plan.educator_reflection }}
+    </li>
+  </ol>
 </div>
 </body>
 </html>
