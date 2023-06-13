@@ -4,7 +4,7 @@ import openai
 app = Flask(__name__)
 
 # Configure OpenAI API credentials
-openai.api_key = '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'
+openai.api_key = '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'
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -32,7 +32,14 @@ def generate_lesson_plan():
     # Extract the generated lesson plan from ChatGPT response
     generated_plan = response.choices[0].text.strip()
 
-    return render_template('lesson_plan.html', generated_plan=generated_plan)
+    # Render the lesson_plan.html template with form inputs and generated plan
+    return render_template('lesson_plan.html',
+                           subject=subject,
+                           class_level=class_level,
+                           learning_objectives=learning_objectives,
+                           duration=duration,
+                           teacher_name=teacher_name,
+                           generated_plan=generated_plan)
 
 
 if __name__ == '__main__':
