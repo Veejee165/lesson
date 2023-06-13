@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request
 import openai
 
@@ -17,9 +18,17 @@ def generate_lesson_plan():
     class_level = request.form['class_level']
     learning_objectives = request.form['learning_objectives']
     duration = request.form['duration']
+    teacher_name = request.form['teacher_name']
+    # key_vocabulary = request.form['key_vocabulary']
+    # supporting_material = request.form['supporting_material']
+    # learning_outcome = request.form['learning_outcome']
+    # knowledge = request.form['knowledge']
+    # skills = request.form['skills']
+    # understanding = request.form['understanding']
+    # differentiation = request.form['differentiation']
 
     # Generate the prompt for the lesson plan
-    prompt = f"Subject: {subject}\nClass Level: {class_level}\nLearning Objectives: {learning_objectives}\nDuration: {duration}\nGenerate a lesson plan:"
+    prompt = f"1. Lesson title (short): {subject}\n2. Teacher name (short): {teacher_name}\n3. Subject (short): {subject}\n4. Grade (short): {class_level}\n5. Date (short): \n6. Duration (short): {duration}\n7. Key vocabulary (short): \n8. Supporting material: \n9. Learning outcome (short): \n10. Knowledge: \n11. Skills: \n12. Understanding: \n13. Differentiation (Med): \n14. Learning experiences (Med):\n\nPrepare:\nPlan:\nInvestigate:\nApply:\nConnect:\nEvaluate and reflect:\n\nEducator assessment:\nEducator reflection:"
 
     try:
         # Send request to OpenAI API
@@ -37,9 +46,7 @@ def generate_lesson_plan():
 
         return render_template('lesson_plan.html', lesson_plan=lesson_plan)
     except Exception as e:
-        # Handle API errors
-        result = {'Api': 'Api Error'}
-        return result, 201
+        return render_template('error.html', error_message=str(e))
 
 if __name__ == '__main__':
     app.run(debug=True)

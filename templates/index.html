@@ -76,19 +76,43 @@
 <body>
 <div class="container">
   <h1>Lesson Plan Generator</h1>
-  <form action="{{ url_for('generate_lesson_plan') }}" method="POST">
-    <label for="subject">Subject:</label>
+  <form action="/generate_lesson_plan" method="post">
+    <label for="subject">Subject (short):</label>
     <input type="text" id="subject" name="subject" required>
-
-    <label for="class_level">Class Level:</label>
+    <br>
+    <label for="class_level">Grade (short):</label>
     <input type="text" id="class_level" name="class_level" required>
-
+    <br>
     <label for="learning_objectives">Learning Objectives:</label>
-    <textarea id="learning_objectives" name="learning_objectives" rows="4" required></textarea>
-
-    <label for="duration">Duration (in minutes):</label>
-    <input type="number" id="duration" name="duration" required>
-
+    <textarea id="learning_objectives" name="learning_objectives" required></textarea>
+    <br>
+    <label for="duration">Duration (short):</label>
+    <input type="text" id="duration" name="duration" required>
+    <br>
+    <label for="teacher_name">Teacher Name (short):</label>
+    <input type="text" id="teacher_name" name="teacher_name" required>
+    <br>
+<!--    <label for="key_vocabulary">Key Vocabulary (short):</label>-->
+<!--    <input type="text" id="key_vocabulary" name="key_vocabulary" required>-->
+<!--    <br>-->
+<!--    <label for="supporting_material">Supporting Material:</label>-->
+<!--    <textarea id="supporting_material" name="supporting_material" required></textarea>-->
+<!--    <br>-->
+<!--    <label for="learning_outcome">Learning Outcome (short):</label>-->
+<!--    <input type="text" id="learning_outcome" name="learning_outcome" required>-->
+<!--    <br>-->
+<!--    <label for="knowledge">Knowledge:</label>-->
+<!--    <textarea id="knowledge" name="knowledge" required></textarea>-->
+<!--    <br>-->
+<!--    <label for="skills">Skills:</label>-->
+<!--    <textarea id="skills" name="skills" required></textarea>-->
+<!--    <br>-->
+<!--    <label for="understanding">Understanding:</label>-->
+<!--    <textarea id="understanding" name="understanding" required></textarea>-->
+<!--    <br>-->
+<!--    <label for="differentiation">Differentiation (Med):</label>-->
+<!--    <textarea id="differentiation" name="differentiation" required></textarea>-->
+<!--    <br>-->
     <input type="submit" class="c" value="Generate Lesson Plan">
   </form>
 </div>
