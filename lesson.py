@@ -1,11 +1,24 @@
-from flask import Flask, render_template, request
+import json
 import openai
-
+import requests
+from flask import Flask, render_template, request
+import sqlite3
 
 app = Flask(__name__)
 
+
+# create database connection
+conn = sqlite3.connect('books.db', check_same_thread=False)
+c = conn.cursor()
+
+with open('my_sql_code.sql', 'r') as sql_file:
+    sql_text = sql_file.read()
+    c.executescript(sql_text)
+
+conn.commit()
+
 # Configure OpenAI API credentials
-openai.api_key = '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'
+openai.api_key = 'sk-RTkqSm-y2e20zDc9ckbT3BlbkfJgwDEpqedetegp2sмet'
 
 def extract_text_by_heading(lesson_text, heading):
     start_index = lesson_text.find(heading)
@@ -50,6 +63,7 @@ def generate_lesson_plan():
     print('')
 
     headings = ['Supporting Material','Key Vocabulary','Knowledge','Skills','Differentiation ','Prepare', 'Plan', 'Investigate', 'Apply', 'Connect', 'Evaluate and Reflect', 'Educator Assessment', 'Educator Reflection']
+
     extracted_text = {}
     extracted_text['subject']=subject
     extracted_text['classlev']=class_level
@@ -63,10 +77,28 @@ def generate_lesson_plan():
         for key, value in extracted_text.items():
             f.write(f'{key}:{value}\n')
 
+    c.execute("INSERT INTO books (sub,lev, learn, dura,tname,smaterial,vocab,know,skill,prep,plan,inves,apply,con,eval,eass,eref) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)",
+              (extracted_text['subject'], extracted_text['classlev'], extracted_text['learn'],extracted_text['dura'], extracted_text['tname'], extracted_text['Supporting Material'],extracted_text['Key Vocabulary'],extracted_text['Knowledge'],extracted_text['Skills'],extracted_text['Prepare'],extracted_text['Plan'],extracted_text['Investigate'],extracted_text['Apply'],extracted_text['Connect'],extracted_text['Evaluate and Reflect'],extracted_text['Educator Assessment'],extracted_text['Educator Reflection']))
+    conn.commit()
+
+    json_data = json.dumps(extracted_text)
+
+    # Make a POST request to the Strapi API
+    url = 'http://localhost:1337/api/books'
+
+    headers = {
+        'Authorization': 'Bearer 1cb3ac8a64d416d5f659e437267f3f53fc27e8cdf8385335057cb18d7ff1d3f63d9853e199cd7da186354c6a572e2f1e6dddc09a57cf7cc8a48810fc58287d197ebd16fe3b8648ce08cde0273a1d4467e9302199e83af7be6a14a65f097bfc68c71ee29a14d51072443fe58baac158ae27e4db44ca4b8afe123b5feaa538cc47',
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(url, data=json_data, headers=headers)
+
+    # Handle the response from Strapi
+    if response.status_code == 200:
+        print('Data posted to Strapi successfully')
+    else:
+        print('Failed to post data to Strapi')
 
     return render_template('lesson_plan.html', extracted_text=extracted_text)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
